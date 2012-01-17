@@ -9,16 +9,18 @@ module Guard
     Template = ::Slim::Template
 
     def initialize(watchers = [], options = {})
-      @output_root = options.delete(:output_root) || Dir.getwd
-      @input_root  = options.delete(:input_root) || Dir.getwd
-      @context     = options.delete(:context) || Object.new
-      @slim        = options.delete(:slim) || {}
+      @output_root  = options.delete(:output_root) || Dir.getwd
+      @input_root   = options.delete(:input_root) || Dir.getwd
+      @context      = options.delete(:context) || Object.new
+      @slim         = options.delete(:slim) || {}
+      @all_on_start = options.delete(:all_on_start) || true
 
       super watchers, options
     end
 
     def start
       UI.info 'Guard-Slim: Waiting for changes...'
+      run_all if @all_on_start
     end
 
     def run_all
