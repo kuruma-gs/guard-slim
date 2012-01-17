@@ -4,7 +4,7 @@ $:.push File.expand_path("../lib", __FILE__)
 
 Gem::Specification.new do |s|
   s.name        = "guard-slim"
-  s.version     = "0.0.2" #Guard::Slim::VERSION
+  s.version     = "0.0.3" #Guard::Slim::VERSION
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Florian Aßmann"]
   s.email       = ["florian.assmann@email.de"]

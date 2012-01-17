@@ -49,9 +49,17 @@ module Guard
 
         File.join dirname, basename
       end
+
       def render(source)
         Template.new( @slim ) { source }.render @context
+      rescue => e
+        UI.info "Guard-Slim: ERROR"
+        UI.info "-----------------------"
+        UI.info e
+        UI.info "-----------------------"
+        "<pre class='error'>#{e}</pre>"
       end
+
       def all_paths
         Watcher.match_files self, Dir[ ALL ]
       end
